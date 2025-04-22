@@ -1,44 +1,152 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Minha Página Pessoal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Portfólio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background-color: #121212;
-      color: #e0e0e0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      padding: 0;
     }
-    canvas {
-      border: 1px solid #555;
-      background-color: #222;
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0f0f0f; /* Cinza escuro */
+      color: #e0e0e0; /* Texto mais claro */
+      line-height: 1.6;
+    }
+
+    header {
+      background: #000020; /* Azul escuro tipo oceano */
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #000020;
+      padding: 10px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav a {
+      color: #fff;
+      font-weight: 500;
+      padding: 15px 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #8ab4f8; /* Um azul claro no hover, sem mudar o fundo */
+    }
+
+    .section {
+      display: none;
+      padding: 40px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .github-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: #24292f;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .github-button:hover {
+      background-color: #2d333b; /* Um cinza levemente mais claro, bem sutil */
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2a2f3a;
+      font-size: 0.9rem;
+      color: #bbb;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Bem-vindo ao meu site!</h1>
-  <canvas id="desenho" width="400" height="400"></canvas>
+  <header>
+    <h1>Guilherme Dias Nunes de Abreu</h1>
+    <p>Computer Science undegraduate at Universidade de São Paulo (IME-USP).</p>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showSection('About me')">About me</a>
+    <a href="#" onclick="showSection('Interests')">Interests</a>
+    <a href="#" onclick="showSection('Projects')">Projects</a>
+    <a href="https://github.com/guilherme-DNA" target="_blank">GitHub</a>
+  </nav>
+
+  <div id="About me" class="section active">
+    <h2>About me</h2>
+    <p>Computer Science undergraduate with interest in the fields of Machine Learning, AI, Software Development and Theoretical Computer Science.</p>
+  </div>
+
+  <div id="Interests" class="section">
+    <h2>Interests</h2>
+    <p>Gosto de trabalhar com machine learning, redes neurais e computação gráfica. Além disso, sou entusiasta de novas tecnologias, como blockchain e computação quântica.</p>
+  </div>
+
+  <div id="Projects" class="section">
+    <h2>Projects</h2>
+    <ul>
+      No added projects in the moment.
+    </ul>
+  </div>
+
+  <footer>
+    &copy; 2025 Guilherme Dias Nunes de Abreu. Todos os direitos reservados.
+  </footer>
 
   <script>
-    const canvas = document.getElementById('desenho');
-    const ctx = canvas.getContext('2d');
-
-    // Exemplo simples: desenha formas automáticas
-    function desenhar() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'cyan';
-      ctx.beginPath();
-      ctx.arc(Math.random() * 400, Math.random() * 400, 20, 0, 2 * Math.PI);
-      ctx.fill();
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
     }
-
-    setInterval(desenhar, 500); // a cada meio segundo, desenha um novo círculo
   </script>
 </body>
 </html>
+
