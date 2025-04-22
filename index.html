@@ -2,10 +2,43 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Minha Página</title>
+  <title>Minha Página Pessoal</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    canvas {
+      border: 1px solid #555;
+      background-color: #222;
+    }
+  </style>
 </head>
 <body>
-  <h1>Olá, mundo!</h1>
-  <p>Bem-vindo à minha página no GitHub Pages.</p>
+  <h1>Bem-vindo ao meu site!</h1>
+  <canvas id="desenho" width="400" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('desenho');
+    const ctx = canvas.getContext('2d');
+
+    // Exemplo simples: desenha formas automáticas
+    function desenhar() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'cyan';
+      ctx.beginPath();
+      ctx.arc(Math.random() * 400, Math.random() * 400, 20, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+
+    setInterval(desenhar, 500); // a cada meio segundo, desenha um novo círculo
+  </script>
 </body>
 </html>
